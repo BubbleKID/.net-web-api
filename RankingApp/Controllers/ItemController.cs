@@ -4,8 +4,8 @@ using RankingApp.Models;
 namespace RankingApp.Controllers
 {
     [ApiController]
-    [Route("[controller")]
-    public class ItemController: ControllerBase
+    [Route("[controller]")]
+    public class ItemController : ControllerBase
     {
         private static readonly IEnumerable<ItemModel> Items = new[]
         {
@@ -18,9 +18,10 @@ namespace RankingApp.Controllers
             new ItemModel { Id = 7, Title = "Road House", ImageId = 7, Ranking = 0, ItemType = 1},
             new ItemModel { Id = 8, Title = "The Shawshank Redemption", ImageId = 8, Ranking = 0, ItemType = 1},
             new ItemModel { Id = 9, Title = "Star Treck IV", ImageId = 9, Ranking = 0, ItemType = 1},
-            new ItemModel { Id = 10, Title = "Superman 4", ImageId = 10, Ranking = 0, ItemType = 1},
+            new ItemModel { Id = 10, Title = "Superman 4", ImageId = 10, Ranking = 0, ItemType = 1}
         };
 
+        [HttpGet("{itemType:int}")]
         public ItemModel[] Get(int itemType)
         {
             ItemModel[] items = Items.Where(i => i.ItemType == itemType).ToArray();
