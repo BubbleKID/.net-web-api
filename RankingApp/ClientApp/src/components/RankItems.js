@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 export const RankItems = () => {
-  cost [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
   const dataType = 1;
   
   useEffect(() => {
     fetch(`item/${dataType}`)
       .then((result) => {
-        return result.json(0);
+        return result.json();
       })
       .then(data => {
         setItems(data);
@@ -17,7 +17,7 @@ export const RankItems = () => {
   return (
     <main>
       {
-        (item !== null) ? items.map((item) => <h3>{item.title}</h3>):<div>Loading...</div>
+        (items !== null) ? items.map((item) => <h3>{item.title}</h3>):<div>Loading...</div>
       }
     </main>
   )
